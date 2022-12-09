@@ -286,4 +286,8 @@ const (
 	// FlagSessionRemoteCache
 	// Enable using remote cache for user sessions
 	FlagSessionRemoteCache = "sessionRemoteCache"
+
+	// FlagDisablePrometheusExemplarSampling
+	// Disable the sampling of Prometheus&#39;s exemplar sampling
+	FlagDisablePrometheusExemplarSampling = "disablePrometheusExemplarSampling"
 )
