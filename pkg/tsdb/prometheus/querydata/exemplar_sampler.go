@@ -100,8 +100,9 @@ func (e *exemplarSampler) getLabelNames() []string {
 
 // getSampledExemplars returns the exemplars sorted by timestamp
 func (e *exemplarSampler) getSampledExemplars() []exemplar {
+	var exemplars []exemplar
+
 	if e.disableSampling {
-		var exemplars []exemplar
 		for _, bucket := range e.buckets {
 			exemplars = append(exemplars, bucket...)
 		}
@@ -109,7 +110,8 @@ func (e *exemplarSampler) getSampledExemplars() []exemplar {
 		return exemplars
 	}
 
-	exemplars := make([]exemplar, 0, len(e.buckets))
+	exemplars = make([]exemplar, 0, len(e.buckets))
+
 	for _, b := range e.buckets {
 		// sort by value in descending order
 		sort.SliceStable(b, func(i, j int) bool {
