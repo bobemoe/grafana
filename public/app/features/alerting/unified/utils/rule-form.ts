@@ -60,6 +60,7 @@ export const getDefaultFormValues = (): RuleFormValues => {
     noDataState: GrafanaAlertStateDecision.NoData,
     execErrState: GrafanaAlertStateDecision.Error,
     evaluateFor: '5m',
+    evaluateForError: '0m', // Set default as old behaviour
 
     // cortex / loki
     namespace: '',
@@ -94,7 +95,7 @@ function listifyLabelsOrAnnotations(item: Labels | Annotations | undefined): Arr
 }
 
 export function formValuesToRulerGrafanaRuleDTO(values: RuleFormValues): PostableRuleGrafanaRuleDTO {
-  const { name, condition, noDataState, execErrState, evaluateFor, queries } = values;
+  const { name, condition, noDataState, execErrState, evaluateFor, evaluateForError, queries } = values;
   if (condition) {
     return {
       grafana_alert: {
@@ -105,6 +106,7 @@ export function formValuesToRulerGrafanaRuleDTO(values: RuleFormValues): Postabl
         data: queries.map(fixBothInstantAndRangeQuery),
       },
       for: evaluateFor,
+      for_error: evaluateForError,
       annotations: arrayToRecord(values.annotations || []),
       labels: arrayToRecord(values.labels || []),
     };

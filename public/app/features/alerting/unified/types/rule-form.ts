@@ -28,6 +28,7 @@ export interface RuleFormValues {
   execErrState: GrafanaAlertStateDecision;
   folder: RuleForm | null;
   evaluateFor: string;
+  evaluateForError: string;
 
   // cortex / loki rules
   namespace: string;
