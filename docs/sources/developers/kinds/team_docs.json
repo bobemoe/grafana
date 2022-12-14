@@ -1,0 +1,27 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "team",
+    "version": "0.0"
+  },
+  "paths": {},
+  "components": {
+    "schemas": {
+      "team": {
+        "type": "object",
+        "required": ["orgId", "name", "memberCount", "permission", "accessControl", "created", "updated"],
+        "permission": {
+          "description": "TODO - it seems it's a team_member.permission, unlikely it should belong to the team kind",
+          "type": "integer",
+          "enum": [1, 2, 4]
+        },
+        "$schema": "http://json-schema.org/draft-04/schema#"
+      },
+      "team.Permission": {
+        "type": "integer",
+        "enum": [1, 2, 4],
+        "$schema": "http://json-schema.org/draft-04/schema#"
+      }
+    }
+  }
+}
