@@ -113,6 +113,7 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = (props) => {
       options={ACCESS_OPTIONS}
       value={ACCESS_OPTIONS.filter((o) => o.value === dataSourceConfig.access)[0] || DEFAULT_ACCESS_OPTION}
       onChange={(selectedValue) => onSettingsChange({ access: selectedValue.value })}
+      disabled={dataSourceConfig.readOnly}
     />
   );
 
@@ -133,6 +134,7 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = (props) => {
       value={dataSourceConfig.url}
       aria-label={selectors.components.DataSource.DataSourceHttpSettings.urlInput}
       onChange={(event) => onSettingsChange({ url: event.currentTarget.value })}
+      disabled={dataSourceConfig.readOnly}
     />
   );
 
@@ -183,6 +185,7 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = (props) => {
                   onChange={(cookies) =>
                     onSettingsChange({ jsonData: { ...dataSourceConfig.jsonData, keepCookies: cookies } })
                   }
+                  disabled={dataSourceConfig.readOnly}
                 />
               </div>
               <div className="gf-form">
@@ -200,6 +203,7 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = (props) => {
                       jsonData: { ...dataSourceConfig.jsonData, timeout: parseInt(event.currentTarget.value, 10) },
                     });
                   }}
+                  disabled={dataSourceConfig.readOnly}
                 />
               </div>
             </div>
@@ -218,6 +222,7 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = (props) => {
                 onChange={(event) => {
                   onSettingsChange({ basicAuth: event!.currentTarget.checked });
                 }}
+                readOnly={dataSourceConfig.readOnly}
               />
             </InlineField>
 
@@ -232,6 +237,7 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = (props) => {
                 onChange={(event) => {
                   onSettingsChange({ withCredentials: event!.currentTarget.checked });
                 }}
+                readOnly={dataSourceConfig.readOnly}
               />
             </InlineField>
           </div>
@@ -251,6 +257,7 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = (props) => {
                       azureAuthSettings.setAzureAuthEnabled(dataSourceConfig, event!.currentTarget.checked)
                     );
                   }}
+                  readOnly={dataSourceConfig.readOnly}
                 />
               </InlineField>
             </div>
@@ -267,6 +274,7 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = (props) => {
                       jsonData: { ...dataSourceConfig.jsonData, sigV4Auth: event!.currentTarget.checked },
                     });
                   }}
+                  readOnly={dataSourceConfig.readOnly}
                 />
               </InlineField>
             </div>

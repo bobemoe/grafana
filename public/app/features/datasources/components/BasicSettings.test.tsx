@@ -12,6 +12,7 @@ const setup = () => {
     onDefaultChange: jest.fn(),
     onNameChange: jest.fn(),
     alertingSupported: false,
+    readOnly: false,
   };
 
   return render(<BasicSettings {...props} />);

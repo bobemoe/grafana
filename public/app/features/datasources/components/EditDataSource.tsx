@@ -159,6 +159,7 @@ export function EditDataSourceView({
         onDefaultChange={onDefaultChange}
         onNameChange={onNameChange}
         alertingSupported={alertingSupported}
+        readOnly={readOnly || !hasWriteRights}
       />
 
       {plugin && (

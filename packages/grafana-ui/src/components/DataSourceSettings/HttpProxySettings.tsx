@@ -20,6 +20,7 @@ export const HttpProxySettings: React.FC<HttpSettingsBaseProps> = ({
             id="http-settings-tls-client-auth"
             value={dataSourceConfig.jsonData.tlsAuth || false}
             onChange={(event) => onChange({ ...dataSourceConfig.jsonData, tlsAuth: event!.currentTarget.checked })}
+            readOnly={dataSourceConfig.readOnly}
           />
         </InlineField>
         <InlineField label="With CA Cert" tooltip="Needed for verifying self-signed TLS Certs" labelWidth={LABEL_WIDTH}>
@@ -29,6 +30,7 @@ export const HttpProxySettings: React.FC<HttpSettingsBaseProps> = ({
             onChange={(event) =>
               onChange({ ...dataSourceConfig.jsonData, tlsAuthWithCACert: event!.currentTarget.checked })
             }
+            readOnly={dataSourceConfig.readOnly}
           />
         </InlineField>
       </div>
@@ -40,6 +42,7 @@ export const HttpProxySettings: React.FC<HttpSettingsBaseProps> = ({
             onChange={(event) =>
               onChange({ ...dataSourceConfig.jsonData, tlsSkipVerify: event!.currentTarget.checked })
             }
+            readOnly={dataSourceConfig.readOnly}
           />
         </InlineField>
       </div>
@@ -56,6 +59,7 @@ export const HttpProxySettings: React.FC<HttpSettingsBaseProps> = ({
               onChange={(event) =>
                 onChange({ ...dataSourceConfig.jsonData, oauthPassThru: event!.currentTarget.checked })
               }
+              readOnly={dataSourceConfig.readOnly}
             />
           </InlineField>
         </div>

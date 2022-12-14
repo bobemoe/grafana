@@ -1,4 +1,5 @@
 import { css, cx } from '@emotion/css';
+import { read } from 'fs';
 import React, { HTMLProps, ReactNode } from 'react';
 import useMeasure from 'react-use/lib/useMeasure';
 
@@ -23,6 +24,10 @@ export interface Props extends Omit<HTMLProps<HTMLInputElement>, 'prefix' | 'siz
   addonBefore?: ReactNode;
   /** Add a component as an addon after the input */
   addonAfter?: ReactNode;
+  /** Disable the input */
+  readOnly?: boolean;
+  /** Disable the input */
+  disabled?: boolean;
 }
 
 interface StyleDeps {
@@ -32,7 +37,18 @@ interface StyleDeps {
 }
 
 export const Input = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
-  const { className, addonAfter, addonBefore, prefix, suffix, invalid, loading, width = 0, ...restProps } = props;
+  const {
+    className,
+    addonAfter,
+    addonBefore,
+    prefix,
+    suffix,
+    invalid,
+    loading,
+    readOnly,
+    width = 0,
+    ...restProps
+  } = props;
   /**
    * Prefix & suffix are positioned absolutely within inputWrapper. We use client rects below to apply correct padding to the input
    * when prefix/suffix is larger than default (28px = 16px(icon) + 12px(left/right paddings)).
@@ -59,6 +75,7 @@ export const Input = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
           ref={ref}
           className={styles.input}
           {...restProps}
+          disabled={readOnly}
           style={{
             paddingLeft: prefix ? prefixRect.width + 12 : undefined,
             paddingRight: suffix || loading ? suffixRect.width + 12 : undefined,

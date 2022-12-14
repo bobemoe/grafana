@@ -11,9 +11,17 @@ export interface Props {
   onNameChange: (name: string) => void;
   onDefaultChange: (value: boolean) => void;
   alertingSupported: boolean;
+  readOnly: boolean;
 }
 
-export function BasicSettings({ dataSourceName, isDefault, onDefaultChange, onNameChange, alertingSupported }: Props) {
+export function BasicSettings({
+  dataSourceName,
+  isDefault,
+  onDefaultChange,
+  onNameChange,
+  alertingSupported,
+  readOnly,
+}: Props) {
   return (
     <>
       {<AlertingEnabled enabled={alertingSupported} />}
@@ -35,6 +43,8 @@ export function BasicSettings({ dataSourceName, isDefault, onDefaultChange, onNa
                 onChange={(event) => onNameChange(event.currentTarget.value)}
                 required
                 aria-label={selectors.pages.DataSource.name}
+                readOnly={readOnly}
+                loading
               />
             </InlineField>
           </div>
@@ -47,6 +57,7 @@ export function BasicSettings({ dataSourceName, isDefault, onDefaultChange, onNa
               onChange={(event: React.FormEvent<HTMLInputElement>) => {
                 onDefaultChange(event.currentTarget.checked);
               }}
+              readOnly={readOnly}
             />
           </InlineField>
         </div>

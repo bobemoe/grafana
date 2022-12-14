@@ -28,6 +28,7 @@ export function AlertingSettings<T extends AlertingConfig>({ options, onOptionsC
                     jsonData: { ...options.jsonData, manageAlerts: event!.currentTarget.checked },
                   })
                 }
+                readOnly={options.readOnly}
               />
             </InlineField>
           </div>

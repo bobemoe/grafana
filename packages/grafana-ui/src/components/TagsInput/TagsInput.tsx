@@ -73,6 +73,7 @@ export const TagsInput = ({
       <Input
         id={id}
         disabled={disabled}
+        readOnly={disabled}
         placeholder={placeholder}
         onChange={onNameChange}
         value={newTagName}

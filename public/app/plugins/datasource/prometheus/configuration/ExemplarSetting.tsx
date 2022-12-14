@@ -11,9 +11,10 @@ type Props = {
   value: ExemplarTraceIdDestination;
   onChange: (value: ExemplarTraceIdDestination) => void;
   onDelete: () => void;
+  readOnly?: boolean;
 };
 
-export default function ExemplarSetting({ value, onChange, onDelete }: Props) {
+export default function ExemplarSetting({ value, onChange, onDelete, readOnly }: Props) {
   const [isInternalLink, setIsInternalLink] = useState(Boolean(value.datasourceUid));
 
   return (
@@ -24,19 +25,22 @@ export default function ExemplarSetting({ value, onChange, onDelete }: Props) {
             value={isInternalLink}
             aria-label={selectors.components.DataSource.Prometheus.configPage.internalLinkSwitch}
             onChange={(ev) => setIsInternalLink(ev.currentTarget.checked)}
+            readOnly={readOnly}
           />
-          <Button
-            variant="destructive"
-            title="Remove link"
-            icon="times"
-            onClick={(event) => {
-              event.preventDefault();
-              onDelete();
-            }}
-            className={css`
-              margin-left: 8px;
-            `}
-          />
+          {!readOnly && (
+            <Button
+              variant="destructive"
+              title="Remove link"
+              icon="times"
+              onClick={(event) => {
+                event.preventDefault();
+                onDelete();
+              }}
+              className={css`
+                margin-left: 8px;
+              `}
+            />
+          )}
         </>
       </InlineField>
 
@@ -58,6 +62,7 @@ export default function ExemplarSetting({ value, onChange, onDelete }: Props) {
                 url: undefined,
               })
             }
+            readOnly={readOnly}
           />
         </InlineField>
       ) : (
@@ -78,6 +83,7 @@ export default function ExemplarSetting({ value, onChange, onDelete }: Props) {
                 url: event.currentTarget.value,
               })
             }
+            readOnly={readOnly}
           />
         </InlineField>
       )}
@@ -98,6 +104,7 @@ export default function ExemplarSetting({ value, onChange, onDelete }: Props) {
               urlDisplayLabel: event.currentTarget.value,
             })
           }
+          readOnly={readOnly}
         />
       </InlineField>
       <InlineField
@@ -116,6 +123,7 @@ export default function ExemplarSetting({ value, onChange, onDelete }: Props) {
               name: event.currentTarget.value,
             })
           }
+          readOnly={readOnly}
         />
       </InlineField>
     </div>
