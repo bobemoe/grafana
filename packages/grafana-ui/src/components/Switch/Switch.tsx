@@ -14,7 +14,7 @@ export interface Props extends Omit<HTMLProps<HTMLInputElement>, 'value'> {
 }
 
 export const Switch = React.forwardRef<HTMLInputElement, Props>(
-  ({ value, checked, onChange, id, label, readOnly, ...inputProps }, ref) => {
+  ({ value, checked, onChange, id, label, disabled, readOnly, ...inputProps }, ref) => {
     if (checked) {
       deprecationWarning('Switch', 'checked prop', 'value');
     }
@@ -27,10 +27,10 @@ export const Switch = React.forwardRef<HTMLInputElement, Props>(
       <div className={cx(styles.switch)}>
         <input
           type="checkbox"
-          disabled={readOnly}
+          disabled={disabled || readOnly}
           checked={value}
           onChange={(event) => {
-            !readOnly && onChange?.(event);
+            !disabled && !readOnly && onChange?.(event);
           }}
           id={switchIdRef.current}
           {...inputProps}
@@ -54,7 +54,7 @@ export const InlineSwitch = React.forwardRef<HTMLInputElement, InlineSwitchProps
     const styles = getSwitchStyles(theme, transparent);
 
     return (
-      <div className={cx(styles.inlineContainer, className, props.readOnly && styles.readOnly)}>
+      <div className={cx(styles.inlineContainer, className, (props.readOnly || props.disabled) && styles.readOnly)}>
         {showLabel && (
           <label
             htmlFor={id}

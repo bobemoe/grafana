@@ -44,7 +44,6 @@ export function BasicSettings({
                 required
                 aria-label={selectors.pages.DataSource.name}
                 readOnly={readOnly}
-                loading
               />
             </InlineField>
           </div>
