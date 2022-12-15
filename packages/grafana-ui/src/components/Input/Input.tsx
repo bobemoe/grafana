@@ -25,8 +25,6 @@ export interface Props extends Omit<HTMLProps<HTMLInputElement>, 'prefix' | 'siz
   addonAfter?: ReactNode;
   /** Disable the input */
   readOnly?: boolean;
-  /** Disable the input */
-  disabled?: boolean;
 }
 
 interface StyleDeps {
