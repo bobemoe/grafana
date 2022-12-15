@@ -51,6 +51,7 @@ export const AzureAuthSettings: FunctionComponent<HttpSettingsBaseProps> = (prop
         credentials={credentials}
         azureCloudOptions={KnownAzureClouds}
         onCredentialsChange={onCredentialsChange}
+        readOnly={dataSourceConfig.readOnly}
       />
       {overrideAudienceAllowed && (
         <>
@@ -58,7 +59,11 @@ export const AzureAuthSettings: FunctionComponent<HttpSettingsBaseProps> = (prop
           <div className="gf-form-group">
             <InlineFieldRow>
               <InlineField labelWidth={26} label="Override AAD audience">
-                <InlineSwitch value={overrideAudienceChecked} onChange={onOverrideAudienceChange} />
+                <InlineSwitch
+                  value={overrideAudienceChecked}
+                  onChange={onOverrideAudienceChange}
+                  readOnly={dataSourceConfig.readOnly}
+                />
               </InlineField>
             </InlineFieldRow>
             {overrideAudienceChecked && (
@@ -68,6 +73,7 @@ export const AzureAuthSettings: FunctionComponent<HttpSettingsBaseProps> = (prop
                     className="width-30"
                     value={dataSourceConfig.jsonData.azureEndpointResourceId || ''}
                     onChange={onResourceIdChange}
+                    readOnly={dataSourceConfig.readOnly}
                   />
                 </InlineField>
               </InlineFieldRow>

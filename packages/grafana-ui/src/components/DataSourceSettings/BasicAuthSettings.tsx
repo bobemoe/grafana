@@ -43,6 +43,7 @@ export const BasicAuthSettings: React.FC<HttpSettingsProps> = ({ dataSourceConfi
           placeholder="user"
           value={dataSourceConfig.basicAuthUser}
           onChange={(event) => onChange({ ...dataSourceConfig, basicAuthUser: event.currentTarget.value })}
+          readOnly={dataSourceConfig.readOnly}
         />
       </InlineField>
       <InlineField>
@@ -53,6 +54,7 @@ export const BasicAuthSettings: React.FC<HttpSettingsProps> = ({ dataSourceConfi
           labelWidth={10}
           onReset={onPasswordReset}
           onChange={onPasswordChange}
+          readOnly={dataSourceConfig.readOnly}
         />
       </InlineField>
     </>

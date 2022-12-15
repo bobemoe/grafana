@@ -203,7 +203,7 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = (props) => {
                       jsonData: { ...dataSourceConfig.jsonData, timeout: parseInt(event.currentTarget.value, 10) },
                     });
                   }}
-                  disabled={dataSourceConfig.readOnly}
+                  readOnly={dataSourceConfig.readOnly}
                 />
               </div>
             </div>
@@ -297,9 +297,9 @@ export const DataSourceHttpSettings: React.FC<HttpSettingsProps> = (props) => {
           </>
         )}
 
-        {azureAuthSettings?.azureAuthSupported && azureAuthEnabled && azureAuthSettings.azureSettingsUI && (
-          <azureAuthSettings.azureSettingsUI dataSourceConfig={dataSourceConfig} onChange={onChange} />
-        )}
+        {/* {azureAuthSettings?.azureAuthSupported && azureAuthEnabled && azureAuthSettings.azureSettingsUI && ( */}
+        <azureAuthSettings.azureSettingsUI dataSourceConfig={dataSourceConfig} onChange={onChange} />
+        {/* )} */}
 
         {dataSourceConfig.jsonData.sigV4Auth && sigV4AuthToggleEnabled && renderSigV4Editor}
         {(dataSourceConfig.jsonData.tlsAuth || dataSourceConfig.jsonData.tlsAuthWithCACert) && (

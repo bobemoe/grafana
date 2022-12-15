@@ -77,6 +77,7 @@ export const SecretFormField: FunctionComponent<Props> = ({
             className={`gf-form-input width-${inputWidth}`}
             placeholder={placeholder}
             {...inputProps}
+            disabled={inputProps.disabled || inputProps.readOnly}
           />
         )
       }

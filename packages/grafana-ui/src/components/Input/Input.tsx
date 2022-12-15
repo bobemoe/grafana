@@ -1,5 +1,4 @@
 import { css, cx } from '@emotion/css';
-import { read } from 'fs';
 import React, { HTMLProps, ReactNode } from 'react';
 import useMeasure from 'react-use/lib/useMeasure';
 
@@ -49,6 +48,7 @@ export const Input = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
     width = 0,
     ...restProps
   } = props;
+
   /**
    * Prefix & suffix are positioned absolutely within inputWrapper. We use client rects below to apply correct padding to the input
    * when prefix/suffix is larger than default (28px = 16px(icon) + 12px(left/right paddings)).
