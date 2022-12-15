@@ -173,6 +173,7 @@ export class DataSourcePicker extends PureComponent<DataSourcePickerProps, DataS
       placeholder,
       width,
       inputId,
+      disabled,
       readOnly,
       isLoading = false,
     } = this.props;
@@ -185,7 +186,7 @@ export class DataSourcePicker extends PureComponent<DataSourcePickerProps, DataS
       <div aria-label={selectors.components.DataSourcePicker.container}>
         <Select
           isLoading={isLoading}
-          disabled={readOnly}
+          disabled={disabled || readOnly}
           aria-label={selectors.components.DataSourcePicker.inputV2}
           inputId={inputId || 'data-source-picker'}
           className="ds-picker select-container"
